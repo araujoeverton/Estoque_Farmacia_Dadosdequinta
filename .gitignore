@@ -1,0 +1,76 @@
+# Arquivos locais do Terraform
+.terraform/
+.terraform.lock.hcl
+
+# Arquivos de estado
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+terraform.tfstate.d/
+
+# Arquivos de crash log
+crash.log
+crash.*.log
+
+# Arquivos de variáveis que podem conter informações sensíveis
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Arquivos de configuração de CLI 
+.terraformrc
+terraform.rc
+
+# Arquivos de variáveis de ambiente
+.env
+.envrc
+
+# Arquivos de credenciais
+credentials.json
+*.pem
+*.key
+*.pub
+
+# Diretórios e arquivos específicos AWS
+.aws/
+aws.json
+aws.yaml
+
+# Arquivos de log
+*.log
+
+# Diretório de backup
+.backup/
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+.directory
+
+# Arquivos de ferramentas de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos temporários
+*.tmp
+*~
+.tmp/
+
+# Ignore qualquer arquivo .plan gerado para planejamentos Terraform
+*.plan
+
+# Diretórios de dependências
+vendor/
+
+# Ignore qualquer arquivo compactado
+*.zip
+*.tar.gz
+*.tgz

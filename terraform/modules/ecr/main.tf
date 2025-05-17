@@ -2,6 +2,7 @@
 resource "aws_ecr_repository" "airflow" {
   name                 = "estoque-hospitalar-airflow"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true
@@ -15,6 +16,7 @@ resource "aws_ecr_repository" "airflow" {
 resource "aws_ecr_repository" "dbt" {
   name                 = "estoque-hospitalar-dbt"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true

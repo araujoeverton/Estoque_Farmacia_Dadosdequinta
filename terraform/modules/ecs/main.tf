@@ -176,28 +176,6 @@ resource "aws_cloudwatch_log_group" "dbt" {
   retention_in_days = 30
 }
 
-// Criando um serviço ECS para o Airflow
-resource "aws_ecs_service" "airflow" {
-  name            = "airflow"
-  cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.airflow.arn
-  desired_count   = 1
-  launch_type     = "FARGATE"
-
-  network_configuration {
-    subnets          = var.private_subnets
-    security_groups  = [var.security_group_id]
-    assign_public_ip = false
-  }
-
-  tags = {
-    Name = "estoque-hospitalar-airflow-service"
-  }
-}
-
-// Para o DBT, não criamos um serviço contínuo, já que normalmente é executado como tarefas
-// agendadas pelo Airflow ou manualmente conforme necessário
-
 // Criando um Application Load Balancer para acessar o Airflow
 resource "aws_lb" "airflow" {
   name               = "estoque-hospitalar-alb"
@@ -244,7 +222,7 @@ resource "aws_lb_listener" "airflow" {
 }
 
 // Configurando o serviço para usar o Application Load Balancer
-resource "aws_ecs_service" "airflow_update" {
+resource "aws_ecs_service" "airflow" {
   name            = "airflow"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.airflow.arn
